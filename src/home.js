@@ -44,10 +44,16 @@ app.controller('myCtrl', function ($scope, $http) {
         console.log($scope.tempoChegada);
         console.log($scope.quantNavio);
         console.log($scope.myOpacity);
+        if($scope.quantNavio == -10){
+            console.log("Acerto mizeravi, mas nao passa daqui");
+        }else if($scope.quantNavio<1){
+            console.log("quantidade de navio não pode ser negativa");
+        }
+        process($scope.quantNavio, $scope.tempoChegada, $scope.tempoSimulacao, $scope.listItem);
     }
     
-    $scope.calculateTime = function() {
+    function process(quantNavio, tempoChegada, tempoSimulacao, listItem){
         
-    }
+    };
 
 });
