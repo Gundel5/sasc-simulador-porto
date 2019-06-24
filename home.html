@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="br" class="program">
+<head>
+    <meta charset="UTF-8">
+    <title>Modelo do porto</title>
+	
+	<!--Bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	
+	<!-- Js -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-mask/1.6.3/mask.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.js"></script>
+	
+	<!-- Project -->
+	<link rel="stylesheet" href="home.css">
+    <script type="text/javascript" src="home.js"></script>
+</head>
+
+
+
+<div ng-app="myApp" ng-controller="myCtrl" ng-style="myStyle" class="teste">
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container d-flex justify-content-between">
+            <a href="/home" class="navbar-brand d-flex align-items-center">
+                <strong>Simulador de um porto </strong>
+            </a>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <br>
+        <div class="row">
+            <div class="offset-lg-1 col-lg-10">
+                <div class="card shadow mb-4">
+                    <div class="card-header bg-dark py-3">
+                        <h4 class="m-0 font-weight-bold text-white">Entradas</h4>
+                    </div>
+					<div class="row">
+						<div class="card-body">
+							<div class="container">
+								<div class="row">
+									<div class="col-sm-12 col-md-4">
+										<div class="custom-column">
+											<div class="form-column ">
+												<label> Tempo de chegada (Horas)</label>
+												<input class="form-control " type="text" ng-model="tempoChegada"  ui-mask="99:99" ui-mask-placeholder-char="-">
+												<!-- <span ng-show="#input.$valid"> [[item.tempoChegada]]</span> -->
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-12 col-md-4">
+										<div class="custom-column">
+											<div >
+												<label> Tempo total de simulação (Horas)</label>
+												<input class="form-control " type="text" ng-model="tempoSimulacao"  ui-mask="99:99" ui-mask-placeholder-char="-">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-12 col-md-4">
+										<div class="custom-column">
+											<div >
+												<label> Quantidade de navios </label>
+												<input class="form-control" type="number" ng-model="quantNavio">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					 <div class="card-body">
+                        <h5 class="card-title">Pontos de descarga</h5>
+                        <div ng-repeat="item in listItem track by $index">
+                            <div class="form-group form-inline">
+								<span class="mx-1">[[item.id]] </span>
+								<input class="form-control " type="text" ng-model="item.direita"  ui-mask="99:99" ui-mask-placeholder-char="-">
+                                <button type="button" class="btn btn-primary mx-1"
+                                        ng-click="addItem()">+<i class="fa fa-plus"></i></button>
+                                <button type="button" class="btn btn-danger mx-1 "
+                                        ng-click="removeItem(item.id)">x<i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+					
+					
+                    <div class="card-body">
+						<div class="card-body">
+							<input class="btn btn-success mx-1" type="button" value="Simular" ng-click="generate()">
+						</div>
+                    </div>
+				</div>
+			</div>
+        </div>
+    </div>
+
+    <footer class="sticky-footer">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright © Mateus Elias Gündel e Thales Eduardo Müller 2019</span>
+            </div>
+        </div>
+    </footer>
+</div>
+</html>
