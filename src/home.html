@@ -47,8 +47,8 @@
 									<div class="col-sm-12 col-md-4">
 										<div class="custom-column">
 											<div class="form-column ">
-												<label> Tempo de chegada (Horas)</label>
-												<input class="form-control " type="text" ng-model="tempoChegada"  ui-mask="99:99" ui-mask-placeholder-char="-">
+												<label> Tempo de chegada (Minutos)</label>
+												<input class="form-control " type="text" ng-model="tempoChegada">
 												<!-- <span ng-show="#input.$valid"> [[item.tempoChegada]]</span> -->
 											</div>
 										</div>
@@ -56,8 +56,8 @@
 									<div class="col-sm-12 col-md-4">
 										<div class="custom-column">
 											<div >
-												<label> Tempo total de simulação (Horas)</label>
-												<input class="form-control " type="text" ng-model="tempoSimulacao"  ui-mask="99:99" ui-mask-placeholder-char="-">
+												<label> Tempo total de simulação (Minutos)</label>
+												<input class="form-control " type="text" ng-model="tempoSimulacao">
 											</div>
 										</div>
 									</div>
@@ -79,7 +79,7 @@
                         <div ng-repeat="item in listItem track by $index">
                             <div class="form-group form-inline">
 								<span class="mx-1">[[item.id]] </span>
-								<input class="form-control " type="text" ng-model="item.direita"  ui-mask="99:99" ui-mask-placeholder-char="-">
+								<input class="form-control " type="text" ng-model="item.direita">
                                 <button type="button" class="btn btn-primary mx-1"
                                         ng-click="addItem()">+<i class="fa fa-plus"></i></button>
                                 <button type="button" class="btn btn-danger mx-1 "
