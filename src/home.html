@@ -48,7 +48,7 @@
 										<div class="custom-column">
 											<div class="form-column ">
 												<label> Tempo de chegada (Minutos)</label>
-												<input class="form-control " type="text" ng-model="tempoChegada">
+												<input class="form-control " type="number" ng-model="tempoChegada">
 												<!-- <span ng-show="#input.$valid"> [[item.tempoChegada]]</span> -->
 											</div>
 										</div>
@@ -57,7 +57,7 @@
 										<div class="custom-column">
 											<div >
 												<label> Tempo total de simulação (Minutos)</label>
-												<input class="form-control " type="text" ng-model="tempoSimulacao">
+												<input class="form-control " type="number" ng-model="tempoSimulacao">
 											</div>
 										</div>
 									</div>
@@ -75,11 +75,11 @@
 					</div>
 					
 					 <div class="card-body">
-                        <h5 class="card-title">Pontos de descarga</h5>
+						<h5 class="card-title">Pontos de descarga com tempo em minutos</h5>
                         <div ng-repeat="item in listItem track by $index">
                             <div class="form-group form-inline">
 								<span class="mx-1">[[item.id]] </span>
-								<input class="form-control " type="text" ng-model="item.direita">
+								<input class="form-control " type="number" ng-model="item.tempoDescarga">
                                 <button type="button" class="btn btn-primary mx-1"
                                         ng-click="addItem()">+<i class="fa fa-plus"></i></button>
                                 <button type="button" class="btn btn-danger mx-1 "
@@ -88,6 +88,24 @@
                         </div>
                     </div>
 					
+					<div class="card-body" ng-show="showResult">
+						<h5 class="card-title">Resultados</h5>
+						<div ng-repeat="item in listItem track by $index">
+							<span> Ponto [[item.id]] descarregou [[item.numeroDescarga]] em um tempo de [[item.numeroDescarga * item.tempoDescarga]] minutos</span>
+						</div>
+						<div>
+							<span>[[navioDescarregados]] Navios foram descarregados</span>
+						</div>
+						<div>
+							<span>A taxa de ocupação do porto é de [[taxaOcupacaoPorto]]% </span>
+						</div>
+						<div>
+							<span>Tamanho médio da fila é [[tamanhoMedioFila]]</span>
+						</div>
+						<div>
+							<span>Tempo médio da fila é de [[tempoMedioFila]] minutos</span>
+						</div>
+					</div>
 					
                     <div class="card-body">
 						<div class="card-body">
@@ -97,7 +115,8 @@
 				</div>
 			</div>
         </div>
-    </div>
+	</div>
+
 
     <footer class="sticky-footer">
         <div class="container my-auto">
