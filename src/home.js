@@ -4,10 +4,10 @@ app.config(function ($interpolateProvider) {
 })
 
 app.controller('myCtrl', function ($scope, $http) {
-	$scope.tempoSimulacao = 2;
+	$scope.tempoSimulacao = null;
 	$scope.tempoChegada = null;
 	$scope.quantNavio = null;
-    $scope.myOpacity = 1;
+    $scope.myOpacity = 20;
     $scope.showResult = false;
     
 	
@@ -64,19 +64,19 @@ app.controller('myCtrl', function ($scope, $http) {
         countProcessNavio = 0;
         processingNavio = false;
         timeProcessNavio = 0;
+        countDisOcuppation = 0;
         listItem.forEach(function(element){
             timeProcessNavio += element.tempoDescarga;
         });
         count = 0
         for(timer = 0; timer < tempoSimulacao; timer++ ){
             if(timer % tempoChegada == 0){
-                if($scope.navioEntrada <= quantNavio){
+                if($scope.navioEntrada <= quantNavio) {
                     $scope.navioEntrada += 1;
                     countNavios += 1;
                     $scope.tamanhoMedioFila += countNavios;
                 }
-                
-            }    
+            }
 
             if(processingNavio){
                 countProcessNavio -= 1;
@@ -91,11 +91,13 @@ app.controller('myCtrl', function ($scope, $http) {
                         countProcessNavio = timeProcessNavio;
                         countNavios -= 1;
                     }
+                }else{
+                    countDisOcuppation += 1;
                 }
             }
         }
         $scope.tamanhoMedioFila = $scope.tamanhoMedioFila/$scope.navioEntrada;
-
+        $scope.taxaOcupacaoPorto = (countDisOcuppation/tempoSimulacao) * 100
     };
 
 });
